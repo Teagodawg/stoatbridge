@@ -36,7 +36,7 @@ const PrivacyPolicy = () => {
                 <li>Role names, colors, hierarchy positions, and associated permissions</li>
                 <li>Per-channel permission overrides for each role</li>
                 <li>Custom emoji names and images</li>
-                <li>Your Discord user ID (used solely to verify server ownership/admin status)</li>
+                
               </ul>
               <p className="mt-2 text-muted-foreground">
                 <strong>Note:</strong> StoatBridge uses its own Discord bot with a server-side bot token. You do not provide a bot token — you simply add the bot to your server and provide your server ID.
@@ -49,7 +49,7 @@ const PrivacyPolicy = () => {
 
               <h3 className="text-lg font-medium text-foreground mt-4 mb-2">1.3 IP Addresses</h3>
               <p className="text-muted-foreground">
-                The Bot Advisor feature reads your IP address from request headers (<code className="text-xs bg-muted px-1 py-0.5 rounded">x-forwarded-for</code>) solely for rate limiting purposes. IP addresses are held in ephemeral in-memory storage on the server and are not persisted to any database or log file.
+                All of our backend functions (including Discord API, Stoat API, Embed Sender, and Bot Advisor) read your IP address from request headers (<code className="text-xs bg-muted px-1 py-0.5 rounded">x-forwarded-for</code>) solely for rate-limiting purposes. IP addresses are held in ephemeral in-memory storage on the server and are not persisted to any database or log file.
               </p>
             </section>
 
@@ -76,7 +76,7 @@ const PrivacyPolicy = () => {
                 <li><strong>Preview and mapping:</strong> Displaying your server structure so you can review, rename, and customize it before transferring</li>
                 <li><strong>Ownership verification:</strong> Confirming that you have administrative access to the Discord server being migrated</li>
                 <li><strong>Error reporting:</strong> Providing you with transfer status updates and error details during the migration process</li>
-                <li><strong>Rate limiting:</strong> Using IP addresses to enforce fair-use limits on the Bot Advisor feature</li>
+                <li><strong>Rate limiting:</strong> Using IP addresses to enforce fair-use rate limits across all backend functions</li>
               </ul>
               <p className="mt-2 text-muted-foreground">
                 We do not use your data for advertising, analytics, profiling, or any purpose other than facilitating your migration.
@@ -143,7 +143,7 @@ const PrivacyPolicy = () => {
 
               <h3 className="text-lg font-medium text-foreground mt-4 mb-2">5.6 AI Gateway (Bot Advisor)</h3>
               <p className="text-muted-foreground">
-                The Bot Advisor feature sends bot names and publicly scraped bot directory data to an AI service (via Lovable's AI gateway) to generate setup suggestions. No personal data (such as your email, IP address, or tokens) is included in these AI requests. The AI service processes the request and returns suggestions; we do not store the AI responses.
+                The Bot Advisor feature sends bot names and publicly scraped bot directory data to an AI service (currently Google Gemini, via Lovable's AI gateway) to generate setup suggestions. No personal data (such as your email, IP address, or tokens) is included in these AI requests. The AI service processes the request and returns suggestions; we do not store the AI responses.
               </p>
             </section>
 
@@ -153,10 +153,18 @@ const PrivacyPolicy = () => {
               <p className="text-muted-foreground mb-2">
                 StoatBridge does not use tracking cookies, advertising cookies, or third-party analytics cookies. We use the following browser storage mechanisms:
               </p>
+              <p className="mb-2 text-muted-foreground">
+                StoatBridge does not set any first-party cookies. We use your browser's localStorage for the following purposes:
+              </p>
               <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
-                <li><strong><code className="text-xs bg-muted px-1 py-0.5 rounded">sidebar:state</code> cookie:</strong> A functional cookie set by the UI framework to remember your sidebar layout preference (open/collapsed). It contains no personal data.</li>
-                <li><strong>localStorage (Embed Studio):</strong> The Embed Studio feature saves your embed templates to your browser's localStorage so they persist between visits. This data remains entirely on your device and is not transmitted to any server.</li>
+                <li><strong>Embed Studio templates:</strong> Saved embed configurations so they persist between visits.</li>
+                <li><strong>Sender profile:</strong> Your webhook display name and avatar URL for the Embed Sender.</li>
+                <li><strong>Last-used destination:</strong> The most recently used server ID and channel ID in the Embed Sender.</li>
+                <li><strong>Backend session:</strong> Authentication session data used by the backend client library to maintain your connection.</li>
               </ul>
+              <p className="mt-2 text-muted-foreground">
+                All localStorage data remains entirely on your device and is not transmitted to any server.
+              </p>
               <p className="mt-2 text-muted-foreground">
                 Third-party scripts (such as the Ko-fi widget) may set their own cookies as described in Section 5.4 above.
               </p>
