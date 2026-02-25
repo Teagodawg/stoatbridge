@@ -1,0 +1,13 @@
+project_id = "EXAMPLE_ID"
+
+[functions.discord-api]
+verify_jwt = false
+
+[functions.stoat-api]
+verify_jwt = false
+
+[functions.bot-advisor]
+verify_jwt = false
+
+[functions.embed-send]
+verify_jwt = false
